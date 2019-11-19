@@ -1,0 +1,14 @@
+[all:vars]
+image_name="maodouzi/ecust-courseinfo"
+# image_version="latest"
+image_version="v1.0"
+data_external_dir="/Users/wuwenxiang/local/github-mine/Project-ECUST-CourseInfo/courseinfo/data/"
+data_hostpath="/root/data/"
+data_containerpath="/home/www/ecustCourseInfo/src/courseinfo/data/"
+# container_port="80"
+# host_port="80"
+
+bastion_data_device="/dev/vdb"
+
+[webserver]
+course

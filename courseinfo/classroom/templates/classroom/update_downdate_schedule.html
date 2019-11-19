@@ -1,0 +1,33 @@
+    <div class="col-md-12 column">
+        
+
+            <form class="form-horizontal" role="form" action="" method="post">               
+                {% csrf_token %}
+                <input type="text" name="count" value="{{count}}"  style="display:none">
+                <input type="text" name="kcmc" value="{{kcmc}}"  style="display:none">
+                <input type="text" name="TEACHER_NAME" value="{{TEACHER_NAME}}"  style="display:none">
+                <input type="text" name="CLASSROOM_NAME" value="{{CLASSROOM_NAME}}"  style="display:none">
+                
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-success" name="update" value="1">上一天</button>  
+                </div>
+
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-success" name="todaydate" value="1">今 天</button>  
+                </div>
+                <div class="col-md-3">
+                    <button type="submit" class="btn btn-success" name="downdate" value="1">下一天</button>
+                </div> 
+                <div class="col-md-3">
+                    <input type="date" name="date" value="" autofocus >
+                </div>
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-success"  value="">查询</button>
+                </div>               
+            </form>
+        
+
+       
+        <br><br>
+    </div>
+ 

@@ -1,0 +1,42 @@
+<br>
+<div class="jumbotron">   
+    <form method="post" action="/schedule/filter/">
+        {% csrf_token %}
+        <div class="col-md-4 column">
+            <div class="input-group">
+                <span class="input-group-addon">按课程查</span>
+                <input type="text" class="form-control" placeholder="课程名称 默认查询当天课程" 
+                name="kcmc" value="" autofocus />
+                </input>
+            </div>            
+        </div>        
+        <div class="col-md-4 column">          
+            <div class="input-group">
+                <span class="input-group-addon">按教师查</span>
+                <input type="text" class="form-control" placeholder="教师姓名 默认查询当天课程" name="TEACHER_NAME" value="" autofocus />
+                </input>
+            </div>
+        </div>
+        <div class="col-md-4 column">          
+            <div class="input-group">
+                <span class="input-group-addon">按教室查</span>
+                <input type="text" class="form-control" placeholder="教室名称 默认查询当天课程" name="CLASSROOM_NAME" value="" autofocus />
+                </input>
+            </div>
+        </div>
+
+        <br><br>
+
+
+
+
+
+            {% if user in operators %}
+            {% endif %}
+            
+            
+            <button class="btn btn-lg btn-danger btn-block" type="submit">查询</button>
+            
+            </form>
+
+</div>

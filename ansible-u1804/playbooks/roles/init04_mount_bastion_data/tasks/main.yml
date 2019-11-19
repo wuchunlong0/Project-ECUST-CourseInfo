@@ -1,0 +1,27 @@
+- name: "Format {{ bastion_data_device }} to {{ bastion_data_fstype }}"
+  filesystem:
+    fstype: "{{ bastion_data_fstype }}"
+    dev: "{{ bastion_data_device }}"
+
+- name: "Mkdir {{ bastion_data_path }}"
+  file:
+    path: "{{ bastion_data_path }}"
+    state: "directory"
+    mode: "0755"
+
+- name: "Mount {{ bastion_data_device }} present"
+  mount:
+    path: "{{ bastion_data_path }}"
+    src: "{{ bastion_data_device }}"
+    state: "present"
+    fstype: "{{ bastion_data_fstype }}"
+
+- name: restorecon {{ bastion_data_path }}
+  shell: "restorecon -R {{ bastion_data_path }}"
+
+- name: "Mount {{ bastion_data_device }} mounted"
+  mount:
+    path: "{{ bastion_data_path }}"
+    src: "{{ bastion_data_device }}"
+    state: "mounted"
+    fstype: "{{ bastion_data_fstype }}"

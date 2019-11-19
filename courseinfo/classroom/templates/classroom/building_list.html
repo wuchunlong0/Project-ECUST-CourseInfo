@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block body %}
+<div class="container theme-showcase" role="main">
+    <div class="col-md-12 column">
+        <a href='/' class="btn btn-lg btn-success btn-block"  > 返回 </a> 
+    </div><br><br><br>    
+    <div class="col-md-12 column">
+        <div class="jumbotron"> 
+            <div class="text-center" ><h3>{{cleanData.query}} -- {{cleanData.campus}} -- 教学楼列表 <h3></div> 
+            {% for b in buildings %}                 
+                <div class="col-md-4 column">
+                    <a href='#' class="btn btn-lg btn-danger btn-block" onclick="document.getElementById('{{forloop.counter}}').submit();" >
+                        <form action='/room/list/' method='post' name='{{forloop.counter}}' id='{{forloop.counter}}' enctype='multipart/form-data'>
+                            {% csrf_token %}
+                            <input name='building' value='{{b}}' style="display:none" type='text'>
+                            {% for key, value in cleanData.items %}
+                                <input name= "{{key}}" value= "{{value}}" style="display:none" type='text'>
+                            {% endfor %}  
+                        </form>
+                    {{b}}
+                    </a>
+                
+                </div>
+                {% if forloop.counter|divisibleby:3 %}
+                    <br><br><br><br><!-- 被3除尽 换行 -->
+                {% endif %}
+            {% endfor %}<br>
+        </div>        
+    </div>
+</div>
+{% endblock %}

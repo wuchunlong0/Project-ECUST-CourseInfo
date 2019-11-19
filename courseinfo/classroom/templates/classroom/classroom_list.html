@@ -1,0 +1,36 @@
+{% extends 'account/layout.html' %}
+
+{% block content %}
+
+       
+<div class="container theme-showcase" role="main">
+    <br><br><br>
+    <div class="col-md-12 column text-center">
+       <h3>全部教室列表</h3>
+    </div>
+     {% include 'home/djangopage.html' %}  <br><br>
+        <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+                <th>教室ID</th>
+                <th>教室名称</th>
+                <th>教学楼</th>
+                <th>教室类型</th>
+                <th>校区</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for d in data_list %}
+                <tr>
+                    <td>{{ d.ROOM_ID }}</td>
+                    <td>{{ d.ROOM_NAME }}</td>
+                    <td>{{ d.BUILDING }}</td>
+                    <td>{{ d.TYPE }}</td>
+                    <td>{{ d.CAMPUS }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    
+    </div>
+{% endblock %}

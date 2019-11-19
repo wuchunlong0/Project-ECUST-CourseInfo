@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block body %}
+<div class="container theme-showcase" role="main">
+    <br>    
+    <div class="col-md-12 column">
+        <div class="jumbotron"> 
+            <div class="text-center" ><h3>{{cleanData.query}} -- 校区列表 <h3></div> 
+            {% for d in campus_list %}                 
+                <a href='#' class='btn btn-lg btn-danger btn-block' onclick="document.getElementById('{{forloop.counter}}').submit();" />
+                    <form action='/building/list/' method='post' name='{{forloop.counter}}' id='{{forloop.counter}}' enctype='multipart/form-data' />
+                        {% csrf_token %}
+                        <input  name='campus'  value='{{d}}'  style='display:none' type='text'>
+                        {% for key, value in cleanData.items %}
+                            <input name="{{key}}" value="{{value}}"  style='display:none' type='text'>
+                        {% endfor %} 
+                    </form>
+                    {{d}}
+                </a>
+                <br><br>      
+            {% endfor %}
+        </div>        
+    </div>
+    <div class="col-md-12 column">
+        <a href='/' class="btn btn-lg btn-success btn-block"  > 返回首页 </a> 
+    </div><br>
+</div>
+{% endblock %}

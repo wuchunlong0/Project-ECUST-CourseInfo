@@ -1,0 +1,60 @@
+{% extends 'account/layout.html' %}
+{% block content %}
+       
+<div class="container theme-showcase" role="main">
+    <br><br><br>
+    <div class="col-md-12 column text-center">
+       <h3>全部课程列表</h3>
+    </div>
+
+
+    {% include 'home/djangopage.html' %}  <br><br>
+        <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>ID号</th>
+                <th>学期</th>
+                <th>课程名称</th>
+                <th>教师ID</th>
+                <th>教师姓名</th>
+                <th>上课时间</th>
+                <th>上课安排</th>
+                <th>教室名称</th>
+                <th>教室ID</th>
+                <th>星期</th>
+                <th>开始的课节</th>
+                <th>结束的课节</th>
+                <th>第几周开始课程</th>
+                <th>第几周结束课程</th>
+                <th>有无课程</th>
+                <th>备注</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for d in data_list %}
+                <tr>
+                    <td>{{ forloop.counter | add:offset }}</td>
+                    <td>{{ d.JX0404ID}}</td>
+                    <td>{{ d.TERMNAME}}</td>
+                    <td>{{ d.KCMC }}</td>
+                    <td>{{ d.TEACHER_ID }}</td>
+                    <td>{{ d.TEACHER_NAME }}</td>
+                    <td>{{ d.CLASS_TIME }}</td>
+                    <td>{{ d.START_TIME }}</td>
+                    <td>{{ d.CLASSROOM_NAME}}</td>
+                    <td><a href='/classromm/list/?room_id={{d.CLASSROOM_ID}}'><i class="fa fa-university" aria-hidden="true">{{ d.CLASSROOM_ID }}</i></a> </td>
+                    <td>{{ d.XQ}}</td>
+                    <td>{{ d.KS}}</td>
+                    <td>{{ d.JS}}</td>
+                    <td>{{ d.ZC1}}</td>
+                    <td>{{ d.ZC2}}</td>
+                    <td>{{ d.SJBZ}}</td>                    
+                    <td>{{ d.SHOWTEXT}}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% include 'home/djangopage.html' %}  <!--分页-->
+    </div>
+{% endblock %}

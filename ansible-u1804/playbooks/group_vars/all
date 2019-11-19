@@ -1,0 +1,5 @@
+---
+
+container_name: "96c99daf55d546bea840400b0a488144"
+bastion_data_fstype: "xfs"
+bastion_data_path: "/bastion-data"
