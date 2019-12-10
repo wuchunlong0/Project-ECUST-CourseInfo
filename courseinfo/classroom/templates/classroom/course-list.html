@@ -1,55 +1,61 @@
-{% extends "base.html" %}
-{% block body %}       
+{% extends "classroom/layout.html" %}
+{% block content %}       
 <div class="container theme-showcase" role="main">
     <br><br><br>
+
+    <form action="" method="POST">
+        {% csrf_token %}
+            {% if isfile  %}
+                <span>同步中，请稍等...</span>
+            {% else %}
+                <button type="submit">更新数据库</button>
+            {% endif %}
+    </form>
     <div class="col-md-12 column text-center">
        <h3>全部课程列表</h3>
     </div>
-
-
       <br><br>
+
+        {% include 'home/djangopage.html' %} 
+
         <table class="table table-bordered table-hover">
             <thead>
             <tr>
                 
-                <th>ID号</th>
+                <th>课程ID</th>
                 <th>学期</th>
                 <th>课程名称</th>
-                <th>教师ID</th>
                 <th>教师姓名</th>
                 <th>上课时间</th>
                 <th>上课安排</th>
                 <th>教室名称</th>
-                <th>教室ID</th>
                 <th>星期</th>
                 <th>开始的课节</th>
                 <th>结束的课节</th>
                 <th>第几周开始课程</th>
                 <th>第几周结束课程</th>
                 <th>有无课程</th>
-                <th>备注</th>
+                <th>备注上课安排</th>
             </tr>
             </thead>
             <tbody>
             {% for d in data_list %}
                 <tr>
                     
-                    <td>{{ d.JX0404ID}}</td>
-                    <td>{{ d.TERMNAME}}</td>
-                    <td>{{ d.KCMC }}</td>
-                    <td>{{ d.TEACHER_ID }}</td>
-                    <td>{{ d.TEACHER_NAME }}</td>
+                    <td>{{ d.courseid}}</td>
+                    <td>{{ d.term.name}}</td>
+                    <td>{{ d.name }}</td>
+                    <td>{{ d.teacher.name }}</td>
                     <td>{{ d.CLASS_TIME }}</td>
                     <td>{{ d.START_TIME }}</td>
-                    <td>{{ d.CLASSROOM_NAME}}</td>
-                    <td><a href='/classromm/list/?room_id={{d.CLASSROOM_ID}}'><i class="fa fa-university" aria-hidden="true">{{ d.CLASSROOM_ID }}</i></a> </td>
+                    <td>{{ d.classroom.name}}</td>
                     <td>{{ d.XQ}}</td>
                     <td>{{ d.KS}}</td>
                     <td>{{ d.JS}}</td>
                     <td>{{ d.ZC1}}</td>
                     <td>{{ d.ZC2}}</td>
                     <td>{{ d.SJBZ}}</td>                    
-                    <td>{{ d.SHOWTEXT}}</td>
+                    <td>{{ d.showtext}}</td>
                 </tr>
             {% endfor %}
             </tbody>

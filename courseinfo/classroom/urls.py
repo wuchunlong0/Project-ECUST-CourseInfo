@@ -17,4 +17,6 @@ urlpatterns = [
     path('courseinfo/classroom/<str:campus>/<str:building>/', views.courseClassroom),
     path('courseinfo/classroom/<str:campus>/<str:building>/<str:classroom>/', views.classroomDetails),
     path('courseinfo/<str:id>/', views.courseDetails),
+    
+    path('courselist/<int:page>/', views.courselist, name='courselist'),
 ]

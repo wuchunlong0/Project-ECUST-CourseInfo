@@ -1,5 +1,7 @@
+import os
 from django.shortcuts import render
 from django.http import Http404, HttpResponse, HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
 import time
 import datetime
 from functools import reduce
@@ -194,3 +196,18 @@ def teacherNameSearch(request, page):
     data_list, pageList, num_pages, page = djangoPage(courses, page, PAGE_NUM)
     offset = PAGE_NUM * (page - 1)
     return render(request, 'classroom/search-teachername.html', context=locals())
+
+@login_required
+def courselist(request, page):
+    cleanData = request.GET.dict()
+    filepath = 'data/statefile.txt'
+    if request.method == 'POST':        
+        with open(filepath,'w+') as fp:  
+            fp.write('0')     
+    queryString = '?'+'&'.join(['%s=%s' % (k,v) for (k,v) in cleanData.items()])
+    baseUrl = '/courselist'
+    isfile = os.path.exists(filepath)
+    courses = Course.objects.filter()
+    data_list, pageList, num_pages, page = djangoPage(courses, page, PAGE_NUM)
+    offset = PAGE_NUM * (page - 1)
+    return render(request, 'classroom/course-list.html', context=locals())
