@@ -1,17 +1,13 @@
 {% extends 'admin/change_list.html' %}
 
 {% block object-tools %}
-<div>   
-    <form action="mortal/" method="POST" style="display:inline">
+<div>                
+	<form action="mortal/" method="POST" style="display:inline">
     	{% csrf_token %}
     	<span style="color:#f00">必须先按数据库状态按钮</span>&nbsp;<button type="submit">数据库状态</button>
 	</form>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-    <form action="immortal/" method="POST" style="display:inline">
-        {% csrf_token %}            
-         <button type="submit">同步数据库</button>            
-    </form>
-
+   
+    <span style="display:inline">数据库同步中，请稍等... </span> &nbsp;&nbsp;&nbsp;&nbsp;
 </div>
 <br/>
 {{ block.super }}
