@@ -1,6 +1,6 @@
 gunicorn
 setuptools
-ansible==2.9
+ansible==2.9.20
 gevent
 django==2.2.6
 django-filter
